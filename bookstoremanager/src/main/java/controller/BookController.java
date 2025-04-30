@@ -6,8 +6,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import dto.MessageResponseDTO;
 import entity.Book;
+import lombok.Builder;
+import lombok.Data;
 import repository.BookRepository;
 
 @RestController
@@ -24,9 +25,15 @@ public class BookController {
 
 
     @PostMapping
-	public MessageResponseDTO create(@RequestBody Book book) {
-		
+	public Class<MessageResponseDTO> create(@RequestBody Book book) {
 		Book savedBook = bookRepository.save(book);
-		return MessageResponseDTO.builder().message("Book created with ID " + savedBook.getId());.build();
+		return MessageResponseDTO.class;
 	}
+    
+    @Data
+    @Builder
+    
+    public static class MessageResponseDTO {
+    	private String message;
+    }
 }
