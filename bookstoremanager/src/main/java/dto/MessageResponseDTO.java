@@ -11,7 +11,7 @@ public class MessageResponseDTO {
 
 	public static Object builder() {
 		// TODO Auto-generated method stub
-		return null;
+		return("Teste");
 	}
 
 }

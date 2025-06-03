@@ -12,7 +12,7 @@ import lombok.Data;
 import repository.BookRepository;
 
 @RestController
-@RequestMapping("/api/v1/books")
+@RequestMapping("/C:\\Projetos\\Back\\proj\\bookstoremanager")
 public class BookController {
 
 	private BookRepository bookRepository;
@@ -20,14 +20,15 @@ public class BookController {
 	
 	@Autowired
 	public BookController(BookRepository bookrepository) {
-		this.bookRepository = bookrepository;
+		this.bookRepository = bookRepository;
 	}
 
 
-    @PostMapping
-	public Class<MessageResponseDTO> create(@RequestBody Book book) {
-		Book savedBook = bookRepository.save(book);
-		return MessageResponseDTO.class;
+	@PostMapping
+	public Object create(@RequestBody Book book) {
+	    Book savedBook = bookRepository.save(book);
+	    return MessageResponseDTO
+	            .builder();
 	}
     
     @Data
@@ -35,5 +36,15 @@ public class BookController {
     
     public static class MessageResponseDTO {
     	private String message;
+
+		public static Object builder() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		public Object message(String string) {
+			// TODO Auto-generated method stub
+			return null;
+		}
     }
 }
